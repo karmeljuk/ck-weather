@@ -85,4 +85,10 @@ function get_ck_weather_data($woeid, $tempscale){
   
 }  
 
+function save() {
+  global $wpdb;
+  $wpdb->insert($wpdb->enam, array('username' => "enam" ,
+                                 'useremail' => "myemail@somedomain.com"));
+}
+
 add_filter('widget_text', 'do_shortcode');
