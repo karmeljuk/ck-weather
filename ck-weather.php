@@ -13,11 +13,12 @@ Author URI: karmeljuk.ga
 /*
 The Shortcode
 */
+add_filter('widget_text', 'do_shortcode');
 add_shortcode('get_ck_weather', 'get_ck_weather_shortcode');  
 
 function get_ck_weather_shortcode($atts){  
   
-  $args = shortcode_atts(array('woeid' => '', 'tempscale' => 'c'), $atts );     
+  $args = shortcode_atts(array('woeid' => '918180', 'tempscale' => 'c'), $atts );     
   return get_ck_weather_display($args['woeid'], $args['tempscale']);  
   
 }  
@@ -30,7 +31,7 @@ function get_ck_weather_display($woeid, $tempscale){
   $weather_panel = '<div class = "gcw_weather_panel">';        
   if($weather = get_ck_weather_data($woeid, $tempscale)){  
     
-    $weather_panel .= '<span>' . $weather['city'] . '</span>';          
+    $weather_panel .= '<span>' . $weather['city'] . '</span>'. ' ' ;          
     $weather_panel .= '<span>' . $weather['temp'] . ' ' . strtoupper($tempscale) . '</span>';  
     $weather_panel .= '<img src = "' . $weather['icon_url'] . '" />';  
     $weather_panel .= '<span>' . $weather['conditions'] . '</span>';  
@@ -83,12 +84,4 @@ function get_ck_weather_data($woeid, $tempscale){
     
   return 0;  
   
-}  
-
-function save() {
-  global $wpdb;
-  $wpdb->insert($wpdb->enam, array('username' => "enam" ,
-                                 'useremail' => "myemail@somedomain.com"));
 }
-
-add_filter('widget_text', 'do_shortcode');
