@@ -2,7 +2,7 @@
 /* 
 Plugin Name: Cherkasy Weather
 Plugin Script: ck-weather.php
-Plugin URI: http://karmeljuk.ga
+Plugin URI: http://karmeljuk.ga/ck-weather/ck-weather.zip
 Description: A simple weather plugin Cherkasy Weather
 Version: 0.1
 License: GPL

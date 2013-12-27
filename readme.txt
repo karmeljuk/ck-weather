@@ -1,6 +1,6 @@
 === Cherkasy Weather ===
 Contributors: karmeljuk
-Donate link: 
+Donate link: http://karmeljuk.ga/
 Tags: weather, shortcode, weather widget, temp, widgets, sidebar
 Requires at least: 3.3
 Tested up to: 3.5.1
@@ -26,30 +26,39 @@ Use the built in widget or add it somewhere else with this shortcode:
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Use shortcode or widget
 
-== Frequently asked questions ==
+== Frequently Asked Questions ==
 
 = A question that someone might have =
 
 An answer to that question.
 
+= What about foo bar? =
+
+Answer to foo bar dilemma.
+
 == Screenshots ==
 
-1. Widget in work
+1. This screen shot description corresponds to screenshot-1.jpg.
 
 == Changelog ==
 
-= 1.0.1 =
-* Some changes
+= 1.0 =
+* A change since the previous version.
+* Another change.
+
+= 0.5 =
+* List versions from most recent at top to oldest at bottom.
+
+== Upgrade Notice ==
 
 = 1.0 =
-* Initial load of the plugin.
+Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
 
-== Upgrade notice ==
+= 0.5 =
+This version fixes a security related bug.  Upgrade immediately.
 
-= 1.0.1 =
-* Some changes
+== Arbitrary section ==
 
-= 1.0 =
-* Initial load of the plugin.
-
-== Arbitrary section 1 ==
+You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
+plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
+"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
