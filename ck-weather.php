@@ -25,7 +25,7 @@ function get_ck_weather_shortcode($atts){
 
 
 /*
-Light Lifting
+Display weather
 */
 function get_ck_weather_display($woeid, $tempscale){    
   $weather_panel = '<div class = "gcw_weather_panel">';        
@@ -49,10 +49,12 @@ function get_ck_weather_display($woeid, $tempscale){
 }  
 
 /*
-Heavy Lifting
+Get weather
 */
 function get_ck_weather_data($woeid, $tempscale){  
   
+  global $wpdb;
+
   $query_url = 'http://weather.yahooapis.com/forecastrss?w=' . $woeid . '&u=' . $tempscale;  
     
   if($xml = simplexml_load_file($query_url)){  
@@ -85,3 +87,37 @@ function get_ck_weather_data($woeid, $tempscale){
   return 0;  
   
 }
+
+
+/*
+Creating Tables with plugin
+*/
+global $ck_weather_db_version;
+$ck_weather_version = "1.0";
+
+function ck_weather_db_install () {
+   global $wpdb;
+   global $ck_weather_db_version;
+
+   $table_name = $wpdb->prefix . "ck_weather";
+   if($wpdb->get_var("show tables like '$table_name'") != $table_name) {
+      
+      $sql = "CREATE TABLE " . $table_name . " (
+    id mediumint(9) NOT NULL AUTO_INCREMENT,
+    time bigint(11) DEFAULT '0' NOT NULL,
+    city tinytext NOT NULL,
+    temp mediumint NOT NULL,
+    UNIQUE KEY id (id)
+  );";
+
+      require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+      dbDelta($sql);
+
+      $rows_affected = $wpdb->update( $table_name, array( 'time' => current_time('mysql'), 'city' => $weather['city'], 'temp' => $weather['temp'] ) );
+ 
+      add_option("ck_weather_db_version", $ck_weather_db_version);
+
+   }
+}
+
+register_activation_hook(__FILE__,'ck_weather_db_install');
