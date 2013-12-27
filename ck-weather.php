@@ -52,8 +52,6 @@ function get_ck_weather_display($woeid, $tempscale){
 Get weather
 */
 function get_ck_weather_data($woeid, $tempscale){  
-  
-  global $wpdb;
 
   $query_url = 'http://weather.yahooapis.com/forecastrss?w=' . $woeid . '&u=' . $tempscale;  
     
@@ -121,3 +119,4 @@ function ck_weather_db_install () {
 }
 
 register_activation_hook(__FILE__,'ck_weather_db_install');
+
