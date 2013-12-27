@@ -108,6 +108,7 @@ function ck_weather_db_install () {
     date datetime NOT NULL default '0000-00-00 00:00:00',
     city_name tinytext NOT NULL,
     temp int NOT NULL,
+    conditions tinytext NOT NULL,
     UNIQUE KEY id (id)
   );";
 
@@ -129,9 +130,10 @@ function ck_weather_db_install_data()
     $table_name = $wpdb->prefix . "ck_weather";
 
     $wpdb->insert($table_name, array(
-        'date' => current_time('mysql',2),
+        'date' => current_time('mysql'),
         'city_name' => $weather['city'],
-        'temp' => $weather['temp']
+        'temp' => $weather['temp'],
+        'conditions' => $weather['conditions']
     ));
 
     update_option("ck_weather_db_version", $ck_weather_db_version);
